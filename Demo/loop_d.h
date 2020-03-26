@@ -5,6 +5,8 @@
 #ifndef ALGODEMO_LOOP_D_H
 #define ALGODEMO_LOOP_D_H
 
+#ifndef WIN32
+
 #include <string>
 #include <unistd.h>
 #include <time.h>
@@ -39,11 +41,9 @@ namespace oyas{
             return;
         }
         void write_log(string name="oyas.daemon.log",string path="/tmp"){
-            time_t tm={};
             string fpath=path+"/"+name;
             auto fp=open(fpath.c_str(),O_CREAT|O_RDWR|O_APPEND,0600);
             if(fp>0){
-                tm=time(0);
                 string stmp="hello\n";
                 //stmp+=asctime(localtime(&tm));//old fun;
                 write(fp,stmp.c_str(), sizeof(stmp.c_str()));
@@ -55,4 +55,5 @@ namespace oyas{
     }
 }
 
+#endif
 #endif //ALGODEMO_LOOP_D_H
