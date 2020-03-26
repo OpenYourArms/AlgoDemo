@@ -30,6 +30,7 @@ using namespace std;
 namespace oyas{
     namespace sort{
 
+
         //冒泡排序
         template<typename T>
         void BubbleSort(vector<T>& vc,int be=0,int en=1e9){
@@ -308,6 +309,23 @@ namespace oyas{
                 tmp+=lb;
                 vc.push_back(tmp);
 //                vc.back()/=1.2;
+            }
+        }
+        //test function
+        void sortTest(){
+            vector<int> vc;
+            typedef decltype(vc) v_t;
+            randData(vc,25,0,300);
+            print(vc);
+            vector<v_t> tb(6,vc);
+            BubbleSort(tb[0]);
+            SelectionSort(tb[1]);
+            InsertionSort(tb[2]);
+            MergeSort(tb[3]);
+            QuickSort(tb[4]);
+            HeapSort(tb[5],greater<int>());
+            for(auto& e:tb){
+                print(e);
             }
         }
     }
